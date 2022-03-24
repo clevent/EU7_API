@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "e62781b5-1e58-49c6-ae64-2f41de6b33d3",
+		"name": "CARLOS_Farm",
+		"description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find pet by ID",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "api_key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "<API Key>",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/:petId",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "98711"
+						}
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new pet to the store",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"veniam do anim Ut\",\n    \"dolore cupidatat\"\n  ],\n  \"id\": 41250627,\n  \"category\": {\n    \"id\": 6342205,\n    \"name\": \"Ut minim Excepteur\"\n  },\n  \"tags\": [\n    {\n      \"id\": 87597447,\n      \"name\": \"pariatur id\"\n    },\n    {\n      \"id\": -9252479,\n      \"name\": \"qui consequat proident culpa\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updates a pet in the store with form data",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "volup",
+							"description": "Updated name of the pet"
+						},
+						{
+							"key": "status",
+							"value": "veniam",
+							"description": "Updated status of the pet"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "-6692138",
+							"description": "(Required) ID of pet that needs to be updated"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing pet",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"dolor deserunt tempor culpa officia\",\n    \"occaecat Lorem ame\"\n  ],\n  \"id\": -35561470,\n  \"category\": {\n    \"id\": 39144310,\n    \"name\": \"dolore\"\n  },\n  \"tags\": [\n    {\n      \"id\": 84175812,\n      \"name\": \"amet minim id veniam\"\n    },\n    {\n      \"id\": 836421,\n      \"name\": \"Excepteur incididunt et sunt\"\n    }\n  ],\n  \"status\": \"pending\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finds Pets by status",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByStatus?status=available&status=available",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "available",
+							"description": "(Required) Status values that need to be considered for filter"
+						},
+						{
+							"key": "status",
+							"value": "available",
+							"description": "(Required) Status values that need to be considered for filter"
+						}
+					]
+				},
+				"description": "Multiple status values can be provided with comma separated strings"
+			},
+			"response": []
+		},
+		{
+			"name": "Finds Pets by tags",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByTags?tags=mollit Duis&tags=ex culpa aliqua sed",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByTags"
+					],
+					"query": [
+						{
+							"key": "tags",
+							"value": "mollit Duis",
+							"description": "(Required) Tags to filter by"
+						},
+						{
+							"key": "tags",
+							"value": "ex culpa aliqua sed",
+							"description": "(Required) Tags to filter by"
+						}
+					]
+				},
+				"description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "Deletes a pet",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "culpa Duis ipsum ut"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "-6692138",
+							"description": "(Required) Pet id to delete"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploads an image",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "additionalMetadata",
+							"value": "occaecat non aute dolor",
+							"description": "Additional data to pass to server",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"description": "file to upload",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId/uploadImage",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId",
+						"uploadImage"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "-6692138",
+							"description": "(Required) ID of pet to update"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2",
+			"type": "string"
+		}
+	]
+}
