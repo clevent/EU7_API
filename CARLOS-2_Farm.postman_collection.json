@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "e6e589a6-8e2e-41af-8148-9be249eaf79f",
+		"name": "CARLOS-2_Farm",
+		"description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add a new pet to the store",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"let resp = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Labrador\");\r",
+							"});\r",
+							"console.log(resp.id);\r",
+							"pm.environment.set(\"newID\", resp.id);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var number = (pm.environment.get(\"newID\")) + 1;\r",
+							"console.log(number);\r",
+							"\r",
+							"pm.environment.set(\"newID\", number);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Ghost\",\n  \"photoUrls\": [\n    \"little\",\n    \"boy\"\n  ],\n  \"id\": {{newID}},\n  \"category\": {\n    \"id\": 1001,\n    \"name\": \"Labrador\"\n  },\n  \"tags\": [\n    {\n      \"id\": 9009,\n      \"name\": \"guay\"\n    },\n    {\n      \"id\": 10001,\n      \"name\": \"cute\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"max expect status code should be 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"MY CUTE DOGS NAME SHOULD BE same as posted\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Ghost\");\r",
+							"});\r",
+							"let resp = JSON.parse(responseBody);\r",
+							"pm.test(\"Category id should be 1001 and named LABRADOR\", function(){\r",
+							"    pm.expect(resp.category.id).equal(1001)\r",
+							"    pm.expect(resp.category.name).equal(\"Labrador\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "api_key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "<API Key>",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}pet/:petId",
+					"host": [
+						"{{host}}pet"
+					],
+					"path": [
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "{{newID}}"
+						}
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		},
+		{
+			"name": "Updates a pet in the store with form data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = JSON.parse(responseBody);\r",
+							"var pid = \"\" + pm.environment.get(\"newID\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"unknown\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body code should be 200\", function () {\r",
+							"    pm.expect(resp.code).equal(200)\r",
+							"});\r",
+							"pm.test(\"JSON response body message should have pet Id number which created before\", function () {\r",
+							"    pm.expect(resp.message).equal(pid)\r",
+							"});\r",
+							"var posSch = JSON.parse(pm.environment.get(\"schema\"));\r",
+							"\r",
+							"pm.test(\"Schema validation is : OK \", function(){\r",
+							"    pm.response.to.have.jsonSchema(posSch)\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "BARCELONA",
+							"description": "Updated name of the pet"
+						},
+						{
+							"key": "status",
+							"value": "kirmizi_kuyruk",
+							"description": "Updated status of the pet"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "{{newID}}",
+							"description": "(Required) ID of pet that needs to be updated"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing pet",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							" var names = [\"MADRID\", \"PASCAL\", \"SEVILLA\",\"HERO\",\"PEGGY\",\"COMAR\",\"KAPLAN\",\"THOR\",\"BARCA\",\"LESSIE\"];\r",
+							"\r",
+							"pm.environment.set('petNames',names);\r",
+							"\r",
+							"pm.environment.set(\"name\", names[Math.floor(Math.random() * names.length)]);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp=JSON.parse(responseBody);\r",
+							"console.log(resp.name);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verified that pet name correctly setted to environment and response body has same name successfully\", function(){\r",
+							"    pm.expect(resp.name).equal(pm.environment.get(\"name\"))\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verified that Connection HEADER is present\", function () {\r",
+							"    pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verified that Content-Type values are correct at RESPONSE HEADERS\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": {{newID}},\n    \"category\": {\n        \"id\": 1001,\n        \"name\": \"Labrador\"\n    },\n    \"name\": \"{{name}}\",\n    \"photoUrls\": [\n        \"little\",\n        \"boy\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 9009,\n            \"name\": \"guay\"\n        },\n        {\n            \"id\": 10001,\n            \"name\": \"mini\"\n        }\n    ],\n    \"status\": \"kirmizi_kuyruk\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finds Pets by status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp=JSON.parse(responseBody);\r",
+							"console.log(resp.name);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// var nameT = \"\" + pm.environment.get(\"name\");\r",
+							"// pm.test(\"Verified that pet name correctly setted to environment and response body has same name successfully\", function(){\r",
+							"//     pm.expect(resp.id).equals()\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Verified that Connection HEADER is present\", function () {\r",
+							"    pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verified that Content-Type values are correct at RESPONSE HEADERS\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByStatus?status=kirmizi_kuyruk",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "kirmizi_kuyruk",
+							"description": "(Required) Status values that need to be considered for filter"
+						},
+						{
+							"key": "id",
+							"value": "{{newID}}",
+							"description": "(Required) Status values that need to be considered for filter",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Multiple status values can be provided with comma separated strings"
+			},
+			"response": []
+		},
+		{
+			"name": "Finds Pets by tags",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp=JSON.parse(responseBody);\r",
+							"console.log(resp[0].tags[1].name);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verified that tags name setted correctly as MINI\", function(){\r",
+							"    pm.expect(resp[0].tags[1].name).equal(\"mini\")\r",
+							"});\r",
+							"pm.test(\"Verified that Access-Control-Allow-Methods values are correct at RESPONSE HEADERS\", function () {\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\",\"GET, POST, DELETE, PUT\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByTags?tags=mini",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByTags"
+					],
+					"query": [
+						{
+							"key": "tags",
+							"value": "mini",
+							"description": "(Required) Tags to filter by"
+						},
+						{
+							"key": "tags",
+							"value": "ex culpa aliqua sed",
+							"description": "(Required) Tags to filter by",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "uploads an image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"unknown\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body code should be 200\", function () {\r",
+							"    pm.expect(resp.code).equal(200)\r",
+							"});\r",
+							"pm.test(\"JSON response body message should have photo name number which uploaded to server\", function () {\r",
+							"    pm.expect(resp.message).equal(resp.message)\r",
+							"});\r",
+							"var posSch = JSON.parse(pm.environment.get(\"schema\"));\r",
+							"\r",
+							"pm.test(\"Schema validation is : OK \", function(){\r",
+							"    pm.response.to.have.jsonSchema(posSch)\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "additionalMetadata",
+							"value": "occaecat non aute dolor",
+							"description": "Additional data to pass to server",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"description": "file to upload",
+							"type": "file",
+							"src": "/C:/Users/carlo/OneDrive/Desktop/bee.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId/uploadImage",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId",
+						"uploadImage"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "{{newID}}",
+							"description": "(Required) ID of pet to update"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletes a pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var delID = \"\" + pm.environment.get(\"newID\");\r",
+							"pm.test(\"JSON response body message should have pet ID which deleted from server\", function () {\r",
+							"    pm.expect(resp.message).equal(delID)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "culpa Duis ipsum ut"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "{{newID}}",
+							"description": "(Required) Pet id to delete"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2",
+			"type": "string"
+		}
+	]
+}

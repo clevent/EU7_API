@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e62781b5-1e58-49c6-ae64-2f41de6b33d3",
+		"_postman_id": "f6cf67dc-e636-4691-9120-3e61da51a5d1",
 		"name": "CARLOS_Farm",
 		"description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,6 +8,22 @@
 	"item": [
 		{
 			"name": "Find pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"max expect status code should be 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"MY CUTE DOGS NAME SHOULD BE cobra\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"COBRA\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "apikey",
@@ -37,22 +53,17 @@
 					}
 				],
 				"url": {
-					"raw": "https://petstore.swagger.io/v2/pet/:petId",
-					"protocol": "https",
+					"raw": "{{max}}pet/:petId",
 					"host": [
-						"petstore",
-						"swagger",
-						"io"
+						"{{max}}pet"
 					],
 					"path": [
-						"v2",
-						"pet",
 						":petId"
 					],
 					"variable": [
 						{
 							"key": "petId",
-							"value": "98711"
+							"value": "{{newID}}"
 						}
 					]
 				},
@@ -255,39 +266,6 @@
 			"response": []
 		},
 		{
-			"name": "Deletes a pet",
-			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "api_key",
-						"value": "culpa Duis ipsum ut"
-					}
-				],
-				"url": {
-					"raw": "{{baseUrl}}/pet/:petId",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"pet",
-						":petId"
-					],
-					"variable": [
-						{
-							"key": "petId",
-							"value": "-6692138",
-							"description": "(Required) Pet id to delete"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "uploads an image",
 			"request": {
 				"auth": {
@@ -341,6 +319,59 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Deletes a pet",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "culpa Duis ipsum ut"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "-6692138",
+							"description": "(Required) Pet id to delete"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
