@@ -26,7 +26,7 @@
 							"    pm.expect(pm.response.text()).to.include(\"Labrador\");\r",
 							"});\r",
 							"console.log(resp.id);\r",
-							"pm.environment.set(\"newID\", resp.id);"
+							"//pm.environment.set(\"newID\", resp.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -168,7 +168,7 @@
 							"    pm.expect(resp.code).equal(200)\r",
 							"});\r",
 							"pm.test(\"JSON response body message should have pet Id number which created before\", function () {\r",
-							"    pm.expect(resp.message).equal(\"608\")\r",
+							"    pm.expect(resp.message).equal(pid)\r",
 							"});\r",
 							"var posSch = JSON.parse(pm.environment.get(\"schema\"));\r",
 							"\r",
@@ -537,6 +537,12 @@
 							"var delID = \"\" + pm.environment.get(\"newID\");\r",
 							"pm.test(\"JSON response body message should have pet ID which deleted from server\", function () {\r",
 							"    pm.expect(resp.message).equal(delID)\r",
+							"});\r",
+							"pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Successful delete request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
 							"});"
 						],
 						"type": "text/javascript"
