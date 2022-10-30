@@ -1,0 +1,837 @@
+{
+	"info": {
+		"_postman_id": "dd060ceb-e869-48cb-97ac-6097955f567b",
+		"name": "Age Of Empires II API",
+		"description": "Simple API to retrieve resources related to Age of Empires II. The base URL for retrieving the resources is /api/v1\n\nContact Support:\n Name: Albert Alises Sorribas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gets a list of all the civilizations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/civilizations",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"civilizations"
+					]
+				},
+				"description": "Gets a list of all the civilizations in AOE2"
+			},
+			"response": [
+				{
+					"name": "Civilizations Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/civilizations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"civilizations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/civilizations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"civilizations"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a given civilization by ID or name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/civilization/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"civilization",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4",
+							"description": "(Required) ID or name of the civilization to fetch"
+						}
+					]
+				},
+				"description": "Gets a given civilization by ID (Integer) or name (String with spaces replaced with hyphens/underscores)"
+			},
+			"response": [
+				{
+					"name": "Civilization Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/civilization/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"civilization",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the civilization to fetch"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Civilization not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/civilization/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"civilization",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the civilization to fetch"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/civilization/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"civilization",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the civilization to fetch"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a list of all the units",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/units",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"units"
+					]
+				},
+				"description": "Gets a list of all the units in AOE2"
+			},
+			"response": [
+				{
+					"name": "Units Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/units",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"units"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/units",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"units"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a given unit by ID or name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/unit/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"unit",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4",
+							"description": "(Required) ID or name of the unit to fetch"
+						}
+					]
+				},
+				"description": "Gets a given unit by ID (Integer) or name (String with spaces replaced with hyphens/underscores)"
+			},
+			"response": [
+				{
+					"name": "Unit Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/unit/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the unit to fetch"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Unit not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/unit/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the unit to fetch"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application:json"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/unit/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "(Required) ID or name of the unit to fetch"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a list of all the structures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/structures",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"structures"
+					]
+				},
+				"description": "Gets a list of all the structures in AOE2"
+			},
+			"response": [
+				{
+					"name": "Structures Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/structures",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"structures"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application:json"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/structures",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"structures"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a given structure by ID or name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/structure/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"structure",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5",
+							"description": "(Required) ID or name of the structure to fetch"
+						}
+					]
+				},
+				"description": "Gets a given structure by ID (Integer) or name (String with spaces replaced with hyphens/underscores)"
+			},
+			"response": [
+				{
+					"name": "Structure Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/structure/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"structure",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5",
+									"description": "(Required) ID or name of the structure to fetch"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application:json"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Structure not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/structure/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"structure",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5",
+									"description": "(Required) ID or name of the structure to fetch"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application:json"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/structure/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"structure",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5",
+									"description": "(Required) ID or name of the structure to fetch"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a list of all the technologies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/technologies",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"technologies"
+					]
+				},
+				"description": "Gets a list of all the technologies in AOE2"
+			},
+			"response": [
+				{
+					"name": "Technologies Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/technologies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"technologies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application:json"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/technologies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"technologies"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets a given technology by ID or name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/technology/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"technology",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "3",
+							"description": "(Required) ID or name of the technology to fetch"
+						}
+					]
+				},
+				"description": "Gets a given technology by ID (Integer) or name (String with spaces replaced with hyphens/underscores)"
+			},
+			"response": [
+				{
+					"name": "Technology Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/technology/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"technology",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "(Required) ID or name of the technology to fetch"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Technology not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/technology/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"technology",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "(Required) ID or name of the technology to fetch"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Unexpected Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/technology/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"technology",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "(Required) ID or name of the technology to fetch"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/api/v1",
+			"type": "string"
+		}
+	]
+}

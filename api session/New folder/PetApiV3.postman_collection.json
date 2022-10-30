@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "4fa87531-3e9d-4232-863d-253a27db6458",
+		"name": "PetApiV3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET-PetByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var ali = pm.environment.get(\"Newschema\");\r",
+							"\r",
+							"pm.test('Response schema  verification is OK', function() {\r",
+							"  pm.expect(tv4.validate(pm.response.json(),ali)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Schema validation is OK\", function(){\r",
+							"    valid=pm.response.to.have.JsonSchema(ali)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/pet/:id",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_new_Pet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 99,\r\n  \"name\": \"Swegie\",\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Cat\"\r\n  },\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"SOLD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore3.swagger.io/api/v3/pet",
+					"protocol": "https",
+					"host": [
+						"petstore3",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"api",
+						"v3",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET-PetByID Host",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/pet/:id",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "99"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT-PetBody",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 99,\r\n  \"name\": \"CUTE\",\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"rABBIT\"\r\n  },\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"SOLD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/pet",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET-PetByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test.skip(\"Verify that user should get results less than 300 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/pet/:idAhmet",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet",
+						":idAhmet"
+					],
+					"variable": [
+						{
+							"key": "idAhmet",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE-PetByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/pet/:idDELETE",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet",
+						":idDELETE"
+					],
+					"variable": [
+						{
+							"key": "idDELETE",
+							"value": "99"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET-PetByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/pet/:idAhmet",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"pet",
+						":idAhmet"
+					],
+					"variable": [
+						{
+							"key": "idAhmet",
+							"value": "99"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
