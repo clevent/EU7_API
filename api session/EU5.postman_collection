@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "979f2d13-c164-4ddc-b6ee-d4f8ef74fa09",
+		"name": "searchFunction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "TC00-Generate",
+					"item": [
+						{
+							"name": "log in and get token as environmental value Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"token\", jsonData.token);\r",
+											"\r",
+											"console.log(jsonData.token)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://reqres.in/api/login",
+									"protocol": "https",
+									"host": [
+										"reqres",
+										"in"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "all users"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Positive TC",
+			"item": [
+				{
+					"name": "TC01-SearchemailByName",
+					"item": [
+						{
+							"name": "ID-GET_200",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var intRandom = Math.floor(Math.random()*(50-1)+1);\r",
+											"pm.environment.set(\"random2\",intRandom);\r",
+											"\r",
+											"console.log(intRandom);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(\"Request method :\", request.method);\r",
+											"console.log(\"Request headders :\"+JSON.stringify(request.headers));\r",
+											"console.log(\"Response status code :\", responseCode.code);\r",
+											"console.log(\"Response status name :\", responseCode.name);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"lastRequestTimeStamp\",postman.getResponseHeader(\"Date\"));\r",
+											"\r",
+											"var posSchema = JSON.parse(pm.environment.get(\"schemaTech\"));\r",
+											"\r",
+											"pm.test(\"Schema validation is : OK \", function(){\r",
+											"    pm.response.to.have.jsonSchema(posSchema)\r",
+											"});\r",
+											"pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"const isLocal = pm.environment.get(\"environment\") == \"local\";\r",
+											"\r",
+											"(isLocal ? pm.test : pm.test.skip)(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Age of Kings\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/:id",
+									"protocol": "https",
+									"host": [
+										"age-of-empires-2-api",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"technology",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{random2}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ID_gener",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var intRandom = Math.floor(Math.random()*(50-1)+1);\r",
+											"pm.environment.set(\"random1\",intRandom);\r",
+											"\r",
+											"console.log(intRandom);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(\"Request method :\", request.method);\r",
+											"console.log(\"Request headders :\"+JSON.stringify(request.headers));\r",
+											"console.log(\"Response status code :\", responseCode.code);\r",
+											"console.log(\"Response status name :\", responseCode.name);\r",
+											"\r",
+											"// console.log(postman.getResponseHeader(\"Date\"));\r",
+											"// postman.setEnvironmentVariable(\"lastRequestTimeStamp\",postman.getResponseHeader(\"Date\"));\r",
+											"//pm.environment.set(\"lastRequestTimeStamp\",pm.getResponseHeader(\"Date\"));\r",
+											"\r",
+											"var posSchema = JSON.parse(pm.environment.get(\"schemaTech\"));\r",
+											"\r",
+											"pm.test(\"Schema validation is : OK \", function(){\r",
+											"    pm.response.to.have.jsonSchema(posSchema)\r",
+											"});\r",
+											"pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"const isLocal = pm.environment.get(\"environment\") == \"local\";\r",
+											"\r",
+											"(isLocal ? pm.test : pm.test.skip)(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Age of Kings\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}v1/technology/:id",
+									"host": [
+										"{{host}}v1"
+									],
+									"path": [
+										"technology",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{random1}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/:id",
+									"protocol": "https",
+									"host": [
+										"age-of-empires-2-api",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"technology",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{random1}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "NegativeTCs",
+			"item": [
+				{
+					"name": "TC02-GetResultsFromApi-GET-200",
+					"item": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endPoint",
+			"value": "technology"
+		}
+	]
+}

@@ -1,0 +1,863 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "fccd38b9-bef8-47de-b77e-c5ca89e9fd1d"
+    },
+    "item": [
+      {
+        "id": "838ac0e5-6ff5-4228-8164-f4625edec8ae",
+        "name": "Generate Token",
+        "item": [
+          {
+            "id": "27eb3e8a-2838-4609-aef9-637e6491d709",
+            "name": "JWT-200",
+            "request": {
+              "url": {
+                "path": [
+                  "pet",
+                  "findByStatus"
+                ],
+                "host": [
+                  "{{host}}"
+                ],
+                "query": [
+                  {
+                    "key": "status",
+                    "value": "available"
+                  },
+                  {
+                    "key": "status",
+                    "value": "available"
+                  }
+                ],
+                "variable": []
+              },
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"clientId\":{{clientId1}}},\r\n    \"clientSecret\":\"abs34563rtyuiuyhjkk\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "response": [],
+            "event": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "37a54203-15e0-4d23-b7bd-7f725e4a6671",
+        "name": "Positive TC",
+        "item": [
+          {
+            "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+            "name": "New Request",
+            "request": {
+              "url": {
+                "path": [
+                  "pet",
+                  "findByStatus"
+                ],
+                "host": [
+                  "{{host}}"
+                ],
+                "query": [
+                  {
+                    "key": "status",
+                    "value": "available"
+                  },
+                  {
+                    "key": "status",
+                    "value": "available"
+                  }
+                ],
+                "variable": []
+              },
+              "method": "GET"
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test(\"Status code is 200\", function () {\r",
+                    "    pm.response.to.have.status(200);\r",
+                    "});\r",
+                    "\r",
+                    "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                    "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                    "});"
+                  ],
+                  "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+                }
+              }
+            ]
+          }
+        ],
+        "event": []
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "fccd38b9-bef8-47de-b77e-c5ca89e9fd1d",
+      "name": "SearchDatabase_New_Collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "c719927e-bc36-4a0d-a0cb-3a9649312103",
+    "values": []
+  },
+  "globals": {
+    "id": "4436eb7b-e303-4491-9ef4-7df1597581b8",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 2,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 2,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 2,
+        "pending": 0,
+        "failed": 2
+      },
+      "tests": {
+        "total": 2,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 2,
+        "pending": 0,
+        "failed": 1
+      },
+      "testScripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 0,
+      "responseMin": 0,
+      "responseMax": 0,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1634749268472,
+      "completed": 1634749268792
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 2,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "766bc796-561a-44c7-ac1c-ee1ba85fa273",
+          "httpRequestId": "451fdd96-0f67-4162-bb13-d512bb5264f4"
+        },
+        "item": {
+          "id": "27eb3e8a-2838-4609-aef9-637e6491d709",
+          "name": "JWT-200",
+          "request": {
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{host}}"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                },
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clientId\":{{clientId1}}},\r\n    \"clientSecret\":\"abs34563rtyuiuyhjkk\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "pet",
+              "findByStatus"
+            ],
+            "host": [
+              "{{host}}"
+            ],
+            "query": [
+              {
+                "key": "status",
+                "value": "available"
+              },
+              {
+                "key": "status",
+                "value": "available"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.28.4",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4278ad2d-fe82-476b-84e7-e9bbfaf8acec",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{host}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"clientId\":{{clientId1}}},\r\n    \"clientSecret\":\"abs34563rtyuiuyhjkk\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "id": "27eb3e8a-2838-4609-aef9-637e6491d709",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{host}}"
+        }
+      },
+      {
+        "cursor": {
+          "ref": "e5241fb2-7b62-47f1-9c8d-c6e50771f4f8",
+          "length": 2,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "6e43afe4-ca95-4b1f-93f2-4642b539c6af"
+        },
+        "item": {
+          "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+          "name": "New Request",
+          "request": {
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{host}}"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                },
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "pet",
+              "findByStatus"
+            ],
+            "host": [
+              "{{host}}"
+            ],
+            "query": [
+              {
+                "key": "status",
+                "value": "available"
+              },
+              {
+                "key": "status",
+                "value": "available"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.28.4",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "c8baff73-f46f-44ed-857c-3f64698fbc07",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{host}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{host}}"
+        },
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is 200",
+              "message": "expected { Object (id, _details, ...) } to have property 'code'",
+              "stack": "AssertionError: expected { Object (id, _details, ...) } to have property 'code'\n   at Object.eval sandbox-script.js:1:2)"
+            }
+          },
+          {
+            "assertion": "Response time is less than 200ms",
+            "skipped": true
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 0
+    },
+    "failures": [
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{host}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{host}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{host}}\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:69:26)",
+          "checksum": "58dc2bc3eeb32da08e8ae7515836f160",
+          "id": "a73d8e5d-7b43-462e-92f3-c79079dd7120",
+          "timestamp": 1634749268546,
+          "stacktrace": [
+            {
+              "fileName": "dns.js",
+              "lineNumber": 69,
+              "functionName": "GetAddrInfoReqWrap.onlookup [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookup [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "27eb3e8a-2838-4609-aef9-637e6491d709",
+          "name": "JWT-200",
+          "request": {
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{host}}"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                },
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clientId\":{{clientId1}}},\r\n    \"clientSecret\":\"abs34563rtyuiuyhjkk\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "parent": {
+          "id": "838ac0e5-6ff5-4228-8164-f4625edec8ae",
+          "name": "Generate Token",
+          "item": [
+            {
+              "id": "27eb3e8a-2838-4609-aef9-637e6491d709",
+              "name": "JWT-200",
+              "request": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "available"
+                    },
+                    {
+                      "key": "status",
+                      "value": "available"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"clientId\":{{clientId1}}},\r\n    \"clientSecret\":\"abs34563rtyuiuyhjkk\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": []
+            }
+          ],
+          "event": []
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 2,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "766bc796-561a-44c7-ac1c-ee1ba85fa273",
+          "httpRequestId": "451fdd96-0f67-4162-bb13-d512bb5264f4"
+        }
+      },
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{host}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{host}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{host}}\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:69:26)",
+          "checksum": "58dc2bc3eeb32da08e8ae7515836f160",
+          "id": "b5df24bb-131f-445a-aeac-59c724eff17d",
+          "timestamp": 1634749268633,
+          "stacktrace": [
+            {
+              "fileName": "dns.js",
+              "lineNumber": 69,
+              "functionName": "GetAddrInfoReqWrap.onlookup [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookup [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+          "name": "New Request",
+          "request": {
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{host}}"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                },
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "id": "37a54203-15e0-4d23-b7bd-7f725e4a6671",
+          "name": "Positive TC",
+          "item": [
+            {
+              "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+              "name": "New Request",
+              "request": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "available"
+                    },
+                    {
+                      "key": "status",
+                      "value": "available"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                      "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        },
+        "cursor": {
+          "ref": "e5241fb2-7b62-47f1-9c8d-c6e50771f4f8",
+          "length": 2,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "6e43afe4-ca95-4b1f-93f2-4642b539c6af"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is 200",
+          "message": "expected { Object (id, _details, ...) } to have property 'code'",
+          "stack": "AssertionError: expected { Object (id, _details, ...) } to have property 'code'\n   at Object.eval sandbox-script.js:1:2)",
+          "checksum": "a412680c8047933fc8ce5a913f89c3c2",
+          "id": "f057b77f-7624-4b15-b42e-dcfc1108fa9c",
+          "timestamp": 1634749268745,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 2,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+          "name": "New Request",
+          "request": {
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{host}}"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                },
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "id": "37a54203-15e0-4d23-b7bd-7f725e4a6671",
+          "name": "Positive TC",
+          "item": [
+            {
+              "id": "4e929a26-d235-449d-b0ac-9d416922bc9c",
+              "name": "New Request",
+              "request": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "available"
+                    },
+                    {
+                      "key": "status",
+                      "value": "available"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test.skip(\"Response time is less than 200ms\", function () {\r",
+                      "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        },
+        "cursor": {
+          "ref": "e5241fb2-7b62-47f1-9c8d-c6e50771f4f8",
+          "length": 2,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "6e43afe4-ca95-4b1f-93f2-4642b539c6af",
+          "scriptId": "0a786eeb-aa81-48e7-a592-ed5cc3a04b32",
+          "execution": "49bdabf4-f1c7-48cd-802b-b7fb1f0620cd"
+        }
+      }
+    ],
+    "error": null
+  }
+}

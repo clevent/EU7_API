@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "979f2d13-c164-4ddc-b6ee-d4f8ef74fa09",
+		"name": "searchFunction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "TC00-Generate",
+					"item": []
+				},
+				{
+					"name": "TC01-SearchemailByName",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Positive TC",
+			"item": []
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "72111f7a-96f4-4756-bf83-23703e0df179",
+		"name": "COVID19",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://covid-api.mmediagroup.fr/v1/cases",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://covid-api.mmediagroup.fr/v1/cases",
+					"protocol": "https",
+					"host": [
+						"covid-api",
+						"mmediagroup",
+						"fr"
+					],
+					"path": [
+						"v1",
+						"cases"
+					]
+				},
+				"description": "ALL COUNTRIES"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
